@@ -36,7 +36,7 @@ func TestCreateWebsite(t *testing.T) {
 		URL:    "http://test.com",
 	}
 	log.Println("Creating website...", website)
-	CreateWebsite(website)
+	AddWebsite(website)
 
 	var createdWebsite models.Website
 	testDB.First(&createdWebsite, website.ID)
@@ -51,7 +51,7 @@ func TestDeleteWebsite(t *testing.T) {
 		Name:   "Test Website for Delete",
 		URL:    "http://delete.com",
 	}
-	CreateWebsite(website)
+	AddWebsite(website)
 
 	DeleteWebsite(website.ID)
 
@@ -68,7 +68,7 @@ func TestUpdateWebsite(t *testing.T) {
 		Name:   "Test Website for Update",
 		URL:    "http://update.com",
 	}
-	CreateWebsite(website)
+	AddWebsite(website)
 
 	updates := map[string]interface{}{
 		"Name": "Updated Website",
@@ -89,7 +89,7 @@ func TestQueryWebsiteById(t *testing.T) {
 		Name:   "Test Website for Query",
 		URL:    "http://query.com",
 	}
-	CreateWebsite(website)
+	AddWebsite(website)
 
 	retrievedWebsite := QueryWebsiteById(website.ID)
 	if retrievedWebsite == nil || retrievedWebsite.Name != website.Name || retrievedWebsite.URL != website.URL {

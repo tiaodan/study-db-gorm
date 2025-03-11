@@ -42,4 +42,25 @@ func main() {
 	// // 删除记录
 	// db.DeleteAudioBook(1)
 
+	// 插入website默认数据
+	// websiteDefaultNoClass := &models.Website{Name: "待分类", NameId: 0, URL: "未知"} // 未分类
+	// websiteDefaultJ88d := &models.Website{Name: "j88d", NameId: 1, URL: "http://www.j88d.com"}
+	// websites := []*models.Website{websiteDefaultNoClass, websiteDefaultJ88d}
+	// db.BatchAddWebsite(websites)
+
+	// db.DeleteWebsite(1)
+	// websiteIds := []uint{5, 6}
+	// db.BatchDeleteWebsites(websiteIds)
+
+	// 改
+	// db.UpdateWebsite(2, map[string]interface{}{"Name": "待分类111", "NameId": 5, "URL": "未知111"})
+	// 批量改
+	updates := map[uint]map[string]interface{}{
+		7: {"Name": "待分类111", "NameId": 7, "URL": "未知111"},
+		8: {"Name": "待分类222", "NameId": 8, "URL": "未知222"},
+	}
+
+	db.BatchUpdateWebsites(updates)
+	// db.QueryWebsiteById(3)
+
 }
