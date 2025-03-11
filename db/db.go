@@ -1,7 +1,7 @@
 package db
 
 import (
-	"fmt"
+	"log"
 	"study-db-gorm/models"
 	"sync"
 
@@ -19,10 +19,10 @@ func InitDB() {
 		var err error
 		DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 		if err != nil {
-			fmt.Println("数据库连接失败:", err)
+			log.Println("数据库连接失败:", err)
 			panic(err)
 		}
-		fmt.Println("数据库连接成功")
+		log.Println("数据库连接成功")
 	})
 }
 
@@ -30,9 +30,9 @@ func InitDB() {
 func CreateAudioBook(book *models.AudioBook) {
 	result := DB.Create(book)
 	if result.Error != nil {
-		fmt.Println("创建失败:", result.Error)
+		log.Println("创建失败:", result.Error)
 	} else {
-		fmt.Println("创建成功:", book)
+		log.Println("创建成功:", book)
 	}
 }
 
@@ -41,10 +41,10 @@ func GetAudioBookByID(id uint) *models.AudioBook {
 	var book models.AudioBook
 	result := DB.First(&book, id)
 	if result.Error != nil {
-		fmt.Println("查询失败:", result.Error)
+		log.Println("查询失败:", result.Error)
 		return nil
 	}
-	fmt.Println("查询成功:", book)
+	log.Println("查询成功:", book)
 	return &book
 }
 
@@ -53,9 +53,9 @@ func UpdateAudioBook(id uint, updates map[string]interface{}) {
 	var book models.AudioBook
 	result := DB.Model(&book).Where("id = ?", id).Updates(updates)
 	if result.Error != nil {
-		fmt.Println("更新失败:", result.Error)
+		log.Println("更新失败:", result.Error)
 	} else {
-		fmt.Println("更新成功:", updates)
+		log.Println("更新成功:", updates)
 	}
 }
 
@@ -64,8 +64,8 @@ func DeleteAudioBook(id uint) {
 	var book models.AudioBook
 	result := DB.Delete(&book, id)
 	if result.Error != nil {
-		fmt.Println("删除失败:", result.Error)
+		log.Println("删除失败:", result.Error)
 	} else {
-		fmt.Println("删除成功:", id)
+		log.Println("删除成功:", id)
 	}
 }
