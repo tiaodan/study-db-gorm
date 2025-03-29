@@ -58,12 +58,12 @@ func main() {
 
 	// ----------------------测试数据 - type表
 	// 增
-	// typeDefaultNoClass := &models.Type{Name: "待分类11", NameId: 0, Level: 111} // 未分类
+	// typeDefaultNoClass := &models.Type{Name: "待分类11", NameId: 0, Level: 111, Parent: 111} // 未分类
 	// db.AddType(typeDefaultNoClass)
 
 	// 批量增
-	// typeDefaultNoClass := &models.Type{Name: "待分类11", NameId: 0, Level: 111} // 未分类
-	// typeDefaultXuanhuan := &models.Type{Name: "玄幻11", NameId: 1, Level: 111} // 未分类
+	// typeDefaultNoClass := &models.Type{Name: "待分类11", NameId: 0, Level: 111, Parent: 111} // 未分类
+	// typeDefaultXuanhuan := &models.Type{Name: "玄幻11", NameId: 1, Level: 111, Parent: 111} // 未分类
 	// types := []*models.Type{typeDefaultNoClass, typeDefaultXuanhuan}
 	// db.BatchAddTypes(types)
 

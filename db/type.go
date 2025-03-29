@@ -13,7 +13,7 @@ import (
 func AddType(typeData *models.Type) error {
 	result := DB.Clauses(clause.OnConflict{
 		Columns:   []clause.Column{{Name: "NameId"}},
-		DoUpdates: clause.Assignments(map[string]interface{}{"name": typeData.Name, "level": typeData.Level}),
+		DoUpdates: clause.Assignments(map[string]interface{}{"name": typeData.Name, "level": typeData.Level, "parent": typeData.Parent}),
 	}).Create(typeData)
 	if result.Error != nil {
 		log.Println("创建失败:", result.Error)

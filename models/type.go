@@ -6,4 +6,5 @@ type Type struct {
 	NameId int    `gorm:"not null;unique"`
 	Name   string `gorm:"not null"`
 	Level  int    `gorm:"not null"` // 1:一级分类，2:二级分类
+	Parent int    `gorm:"not null"` // 父级分类id
 }
