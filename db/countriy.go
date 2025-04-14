@@ -25,7 +25,7 @@ func AddCountry(country *models.Country) error {
 }
 
 // 批量增
-func BatchAddCountry(countries []*models.Country) {
+func BatchAddCountries(countries []*models.Country) {
 	for i, country := range countries {
 		err := AddCountry(country)
 		if err == nil {

@@ -21,7 +21,7 @@ func init() {
 	db.InitDB()
 
 	// 自动迁移表结构
-	db.DB.AutoMigrate(&models.Website{}, &models.Type{}, &models.Class{}) // 有几个表, 写几个参数
+	db.DB.AutoMigrate(&models.Website{}, &models.Type{}, &models.Class{}, &models.Country{}) // 有几个表, 写几个参数
 
 	// 插入默认数据
 	db.InsertDefaultData()
