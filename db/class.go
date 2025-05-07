@@ -61,7 +61,7 @@ func BatchDeleteClasses(ids []uint) {
 // 改
 func UpdateClass(nameId uint, updates map[string]interface{}) {
 	var classData models.Class
-	result := DB.Model(&classData).Where("name_id = ?", nameId).Updates(updates)
+	result := DB.Model(&classData).Where("name_id = ?", nameId).Select("name").Updates(updates)
 	if result.Error != nil {
 		log.Println("修改失败:", result.Error)
 	} else {
@@ -73,7 +73,7 @@ func UpdateClass(nameId uint, updates map[string]interface{}) {
 func BatchUpdateClasses(updates map[uint]map[string]interface{}) {
 	for nameId, update := range updates {
 		var classData models.Class
-		result := DB.Model(&classData).Where("name_id = ?", nameId).Updates(update)
+		result := DB.Model(&classData).Where("name_id = ?", nameId).Select("name").Updates(update)
 		if result.Error != nil {
 			log.Printf("更新类型 %d 失败: %v\n", nameId, result.Error)
 		} else {
